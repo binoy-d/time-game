@@ -2,13 +2,14 @@
 
 <head>
     <script src="https://cdn.jsdelivr.net/npm/p5@0.10.2/lib/p5.js"></script>   
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
         <script src= "script.js"></script>
-        <p id = "goalTimeText">no goal time</p>
-        <p id = "difP">you were off by nothing</p>
-        <p id = "timer">timer</p>
-        <button onclick="generateTime();">Generate Time</button>
-        <button onclick = "clicked();">Start Timer</button>
 
+        <p id = "maintext">Time Game</p>
+        <div id = "mainbutton">
+            <button type = "button" id = "actualbutton" class="w3-button w3-yellow w3-round-xxlarge w3-jumbo " onclick="clicked()">Generate Time</button>
+        </div>
 </body>
