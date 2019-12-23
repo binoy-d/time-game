@@ -16,8 +16,15 @@ function clicked(){
     updateText();
 }
 function generateTime(){
-    goalTime = parseInt(Math.random()*7+3);
+    goalTime = parseInt(Math.random()*17+3);
 }
+document.onkeypress = function (e) {
+    e = e || window.event;
+    
+    if(e.keyCode === 32){
+        clicked();
+    }
+};
 function updateText(){
     if(state === 0){
         elapsedTime = 0;
@@ -30,10 +37,15 @@ function updateText(){
         document.getElementById("maintext").innerHTML = "Click stop timer to see how you did";
         document.getElementById("actualbutton").textContent = "Stop Timer";
     }else{//if state === 3
-        var difference = (elapsedTime*0.05)-goalTime;
+        var difference = Math.round(((elapsedTime*0.05)-goalTime)*100)/100;
 
-
-        document.getElementById("maintext").innerHTML = "You were off by "+difference+" seconds";
+        if(difference<0){
+            document.getElementById("maintext").innerHTML = "You were " +(-1*difference) +" seconds early";
+        }else if(difference>0){
+            document.getElementById("maintext").innerHTML = "You were " +difference +" seconds late";
+        }else{
+            document.getElementById("maintext").innerHTML = "Perfect Timing!!";
+        }
         document.getElementById("actualbutton").textContent = "Start Over";
     }
 }
