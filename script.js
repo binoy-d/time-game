@@ -1,7 +1,10 @@
 var state = 0;//0 = never clicked, 1 = generated time, 2 = started timer/counting, 3 = stopped timer
-var timer = setInterval(count, 50)
+var timer = setInterval(count, 10)
 var goalTime = 0;
-var elapsedTime = 0; // in 0.05 sec intervals
+var elapsedTime = 0; // in 0.01 sec intervals
+
+
+
 
 function clicked(){
     if(state === 0){
@@ -37,7 +40,7 @@ function updateText(){
         document.getElementById("maintext").innerHTML = "Click stop timer to see how you did";
         document.getElementById("actualbutton").textContent = "Stop Timer";
     }else{//if state === 3
-        var difference = Math.round(((elapsedTime*0.05)-goalTime)*100)/100;
+        var difference = Math.round(((elapsedTime*0.01)-goalTime)*100)/100;
 
         if(difference<0){
             document.getElementById("maintext").innerHTML = "You were " +(-1*difference) +" seconds early";
@@ -53,5 +56,4 @@ function count(){//runs every 50 milliseconds
     if(state == 2){
         elapsedTime++;
     }
-    console.log(state)
 }
